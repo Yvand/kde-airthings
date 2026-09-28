@@ -15,22 +15,30 @@ MouseArea {
 
     readonly property bool vertical: Plasmoid.formFactor === PlasmaCore.Types.Vertical
 
-    // Up to 4 sensor slots. Slot 1 falls back to the first visible reading
-    // when unset; slots 2-4 are skipped entirely when unset ("none").
-    readonly property var slots: {
+    // Config indices (0-3) of the sensors to show, in order. Index 0 is
+    // always shown (falls back to the first visible reading when unset);
+    // indices 1-3 are included only when explicitly configured ("none"
+    // otherwise). This only depends on configuration, not live readings, so
+    // the Repeater below doesn't get rebuilt on every periodic refresh.
+    readonly property var slotIndices: {
         const configured = widget.cfg.compactSensors || [];
-        const result = [];
-        for (let i = 0; i < 4; i++) {
-            const type = configured[i] || "";
-            if (i === 0) {
-                const reading = widget.readings.find(r => r.sensorType === type)
-                                || widget.visibleReadings[0] || null;
-                result.push(reading);
-            } else if (type !== "") {
-                result.push(widget.readings.find(r => r.sensorType === type) || null);
+        const result = [0];
+        for (let i = 1; i < 4; i++) {
+            if ((configured[i] || "") !== "") {
+                result.push(i);
             }
         }
         return result;
+    }
+
+    // Live reading for a given slot's config index, re-evaluated whenever
+    // widget.readings changes (used from a delegate-local binding so only
+    // that binding updates, not the whole Repeater).
+    function slotReading(configIndex) {
+        const configured = widget.cfg.compactSensors || [];
+        const type = configured[configIndex] || "";
+        const found = widget.readings.find(r => r.sensorType === type) || null;
+        return configIndex === 0 ? (found || widget.visibleReadings[0] || null) : found;
     }
 
     Layout.minimumWidth: vertical ? -1 : row.implicitWidth
@@ -44,17 +52,19 @@ MouseArea {
     GridLayout {
         id: row
         anchors.centerIn: parent
-        columns: compact.vertical ? 1 : compact.slots.length
+        columns: compact.vertical ? 1 : compact.slotIndices.length
         rowSpacing: Kirigami.Units.smallSpacing
         columnSpacing: Kirigami.Units.largeSpacing
 
         Repeater {
-            model: compact.slots
+            model: compact.slotIndices
 
             delegate: RowLayout {
                 id: sensorRow
-                required property var modelData
+                required property int modelData
                 required property int index
+
+                readonly property var reading: compact.slotReading(modelData)
 
                 spacing: Kirigami.Units.smallSpacing
 
@@ -72,15 +82,15 @@ MouseArea {
                     implicitWidth: Kirigami.Units.smallSpacing * 2
                     implicitHeight: implicitWidth
                     radius: width / 2
-                    color: sensorRow.modelData
-                           ? compact.widget.qualityColor(Sensors.quality(sensorRow.modelData.sensorType, sensorRow.modelData.value, sensorRow.modelData.unit))
+                    color: sensorRow.reading
+                           ? compact.widget.qualityColor(Sensors.quality(sensorRow.reading.sensorType, sensorRow.reading.value, sensorRow.reading.unit))
                            : Kirigami.Theme.disabledTextColor
                 }
 
                 PlasmaComponents3.Label {
-                    text: !sensorRow.modelData ? "–"
-                          : Sensors.formatValue(sensorRow.modelData.sensorType, sensorRow.modelData.value)
-                            + (compact.vertical ? "" : " " + Sensors.unitLabel(sensorRow.modelData.unit))
+                    text: !sensorRow.reading ? "–"
+                          : Sensors.formatValue(sensorRow.reading.sensorType, sensorRow.reading.value)
+                            + (compact.vertical ? "" : " " + Sensors.unitLabel(sensorRow.reading.unit))
                 }
 
                 // Hover tooltip names the sensor, since with several dots and
@@ -88,8 +98,8 @@ MouseArea {
                 HoverHandler {
                     id: hover
                 }
-                PlasmaComponents3.ToolTip.text: sensorRow.modelData ? i18n(Sensors.info(sensorRow.modelData.sensorType).name) : ""
-                PlasmaComponents3.ToolTip.visible: hover.hovered && sensorRow.modelData !== null
+                PlasmaComponents3.ToolTip.text: sensorRow.reading ? i18n(Sensors.info(sensorRow.reading.sensorType).name) : ""
+                PlasmaComponents3.ToolTip.visible: hover.hovered && sensorRow.reading !== null
                 PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
             }
         }
