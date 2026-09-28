@@ -6,7 +6,7 @@
                 "Email": "yvandev@outlook.fr"
             }
         ],
-        "Category": "Environment and Weather",
+        "Category": "Utilities",
         "Description": "Air quality readings and history from your Airthings device",
         "Description[fr]": "Mesures et historique de la qualité de l'air de votre appareil Airthings",
         "Icon": "weather-fog",
