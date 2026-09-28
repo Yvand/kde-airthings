@@ -376,7 +376,7 @@ msgid "Fetched %1"
 msgstr ""
 
 #: ../package/contents/ui/FullRepresentation.qml:155
-msgid "sample %1"
+msgid "sample recorded %1"
 msgstr ""
 
 #: ../package/contents/ui/FullRepresentation.qml:167
