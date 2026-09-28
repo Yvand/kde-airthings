@@ -11,8 +11,7 @@ KCM.SimpleKCM {
     id: page
 
     property var cfg_visibleSensors: []
-    property string cfg_compactSensor1
-    property string cfg_compactSensor2
+    property var cfg_compactSensors: []
     property string cfg_layoutMode
     property string cfg_themeMode
     property alias cfg_showSparklines: sparklineCheck.checked
@@ -26,7 +25,9 @@ KCM.SimpleKCM {
         return deviceSensors.length > 0 ? deviceSensors : Sensors.SENSOR_TYPES;
     }
 
-    readonly property var compactOptions: [{ text: i18n("First shown sensor"), value: "" }]
+    readonly property var compactOptionsFirst: [{ text: i18n("First shown sensor"), value: "" }]
+        .concat(availableSensors.map(type => ({ text: i18n(Sensors.info(type).name), value: type })))
+    readonly property var compactOptionsOther: [{ text: i18n("None"), value: "" }]
         .concat(availableSensors.map(type => ({ text: i18n(Sensors.info(type).name), value: type })))
 
     // An empty selection means "show every sensor".
@@ -40,6 +41,20 @@ KCM.SimpleKCM {
         if (selected.length > 0) {
             cfg_visibleSensors = selected;
         }
+    }
+
+    // Slot 1-4 accessors for the compactSensors list (empty string = unset).
+    function compactSlot(index) {
+        return cfg_compactSensors[index] || "";
+    }
+
+    function setCompactSlot(index, value) {
+        const updated = Array.from(cfg_compactSensors);
+        while (updated.length <= index) {
+            updated.push("");
+        }
+        updated[index] = value;
+        cfg_compactSensors = updated;
     }
 
     Kirigami.FormLayout {
@@ -63,18 +78,34 @@ KCM.SimpleKCM {
 
         QQC2.ComboBox {
             Kirigami.FormData.label: i18n("Panel shows (1st sensor):")
-            model: page.compactOptions
+            model: page.compactOptionsFirst
             textRole: "text"
-            currentIndex: Math.max(0, page.compactOptions.findIndex(o => o.value === page.cfg_compactSensor1))
-            onActivated: index => page.cfg_compactSensor1 = page.compactOptions[index].value
+            currentIndex: Math.max(0, page.compactOptionsFirst.findIndex(o => o.value === page.compactSlot(0)))
+            onActivated: index => page.setCompactSlot(0, page.compactOptionsFirst[index].value)
         }
 
         QQC2.ComboBox {
             Kirigami.FormData.label: i18n("Panel shows (2nd sensor):")
-            model: page.compactOptions
+            model: page.compactOptionsOther
             textRole: "text"
-            currentIndex: Math.max(0, page.compactOptions.findIndex(o => o.value === page.cfg_compactSensor2))
-            onActivated: index => page.cfg_compactSensor2 = page.compactOptions[index].value
+            currentIndex: Math.max(0, page.compactOptionsOther.findIndex(o => o.value === page.compactSlot(1)))
+            onActivated: index => page.setCompactSlot(1, page.compactOptionsOther[index].value)
+        }
+
+        QQC2.ComboBox {
+            Kirigami.FormData.label: i18n("Panel shows (3rd sensor):")
+            model: page.compactOptionsOther
+            textRole: "text"
+            currentIndex: Math.max(0, page.compactOptionsOther.findIndex(o => o.value === page.compactSlot(2)))
+            onActivated: index => page.setCompactSlot(2, page.compactOptionsOther[index].value)
+        }
+
+        QQC2.ComboBox {
+            Kirigami.FormData.label: i18n("Panel shows (4th sensor):")
+            model: page.compactOptionsOther
+            textRole: "text"
+            currentIndex: Math.max(0, page.compactOptionsOther.findIndex(o => o.value === page.compactSlot(3)))
+            onActivated: index => page.setCompactSlot(3, page.compactOptionsOther[index].value)
         }
 
         Kirigami.Separator {
