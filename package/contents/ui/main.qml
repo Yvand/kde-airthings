@@ -94,7 +94,7 @@ PlasmoidItem {
                 errorMessage = i18n("No readings available for this device yet");
                 return;
             }
-            const recordedMs = Date.parse(result.recorded) || Date.now();
+            const recordedMs = Api.parseUtcTimestamp(result.recorded) || Date.now();
             readings = result.sensors;
             battery = typeof result.batteryPercentage === "number" ? result.batteryPercentage : -1;
             lastUpdatedMs = recordedMs;

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- The "sample recorded" time (shown in the footer, tooltip, and history)
+  was computed as if the API's UTC timestamp were local time, shifting it
+  by the system's UTC offset. It is now correctly converted from UTC to
+  the system's local timezone.
+
 ### Changed
 
 - The compact (panel) view now allows choosing between 1 and 4 sensors to

@@ -39,6 +39,21 @@ function errorMessage(xhr) {
 }
 
 /**
+ * Parses a timestamp string returned by the API (e.g. the "recorded" field), which is
+ * always UTC but comes without a timezone designator (e.g. "2026-09-28T17:24:32"). Without
+ * this, Date.parse would misinterpret it as local time instead of UTC.
+ * @param {string} timestamp
+ * @returns {number} epoch milliseconds, or NaN if the input isn't a usable string
+ */
+export function parseUtcTimestamp(timestamp) {
+    if (typeof timestamp !== "string" || timestamp === "") {
+        return NaN;
+    }
+    const hasTimezone = /Z$|[+-]\d{2}:?\d{2}$/.test(timestamp);
+    return Date.parse(hasTimezone ? timestamp : timestamp + "Z");
+}
+
+/**
  * Sends a request and resolves with the parsed JSON body, or rejects with an ApiError.
  * @param {string} method
  * @param {string} url
