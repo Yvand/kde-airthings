@@ -24,12 +24,10 @@
   <group name="Display">
     <!-- Empty list means "show every sensor". -->
     <entry name="visibleSensors" type="StringList"/>
-    <!-- First sensor to show in panel (empty means "first shown sensor"). -->
-    <entry name="compactSensor1" type="String"/>
-    <!-- Second sensor to show in panel (empty means "none"). -->
-    <entry name="compactSensor2" type="String"/>
-    <!-- Deprecated: use compactSensor1 and compactSensor2 instead. -->
-    <entry name="compactSensor" type="String"/>
+    <!-- Sensors to show in the panel, in order (up to 4).
+         An empty first entry means "first shown sensor"; empty entries in
+         slots 2-4 mean "none" (that slot is skipped). -->
+    <entry name="compactSensors" type="StringList"/>
     <!-- grid, list or row -->
     <entry name="layoutMode" type="String">
       <default>grid</default>

@@ -7,17 +7,31 @@ import org.kde.kirigami as Kirigami
 
 import "code/sensors.mjs" as Sensors
 
-// Shown in panels: the current values of up to two sensors, with quality dots.
+// Shown in panels: the current values of up to four sensors, with quality dots.
 MouseArea {
     id: compact
 
     property var widget
 
     readonly property bool vertical: Plasmoid.formFactor === PlasmaCore.Types.Vertical
-    readonly property var reading1: widget.readings.find(r => r.sensorType === widget.cfg.compactSensor1)
-                                    || widget.visibleReadings[0] || null
-    readonly property var reading2: widget.cfg.compactSensor2 === "" ? null
-                                    : widget.readings.find(r => r.sensorType === widget.cfg.compactSensor2) || null
+
+    // Up to 4 sensor slots. Slot 1 falls back to the first visible reading
+    // when unset; slots 2-4 are skipped entirely when unset ("none").
+    readonly property var slots: {
+        const configured = widget.cfg.compactSensors || [];
+        const result = [];
+        for (let i = 0; i < 4; i++) {
+            const type = configured[i] || "";
+            if (i === 0) {
+                const reading = widget.readings.find(r => r.sensorType === type)
+                                || widget.visibleReadings[0] || null;
+                result.push(reading);
+            } else if (type !== "") {
+                result.push(widget.readings.find(r => r.sensorType === type) || null);
+            }
+        }
+        return result;
+    }
 
     Layout.minimumWidth: vertical ? -1 : row.implicitWidth
     Layout.minimumHeight: vertical ? row.implicitHeight : -1
@@ -30,44 +44,29 @@ MouseArea {
         anchors.centerIn: parent
         spacing: Kirigami.Units.smallSpacing
 
-        // First sensor
-        RowLayout {
-            spacing: Kirigami.Units.smallSpacing
+        Repeater {
+            model: compact.slots
 
-            Rectangle {
-                implicitWidth: Kirigami.Units.smallSpacing * 2
-                implicitHeight: implicitWidth
-                radius: width / 2
-                color: compact.reading1
-                       ? compact.widget.qualityColor(Sensors.quality(compact.reading1.sensorType, compact.reading1.value, compact.reading1.unit))
-                       : Kirigami.Theme.disabledTextColor
-            }
+            delegate: RowLayout {
+                id: sensorRow
+                required property var modelData
 
-            PlasmaComponents3.Label {
-                text: !compact.reading1 ? "–"
-                      : Sensors.formatValue(compact.reading1.sensorType, compact.reading1.value)
-                        + (compact.vertical ? "" : " " + Sensors.unitLabel(compact.reading1.unit))
-            }
-        }
+                spacing: Kirigami.Units.smallSpacing
 
-        // Second sensor (if configured)
-        RowLayout {
-            visible: compact.reading2 !== null
-            spacing: Kirigami.Units.smallSpacing
+                Rectangle {
+                    implicitWidth: Kirigami.Units.smallSpacing * 2
+                    implicitHeight: implicitWidth
+                    radius: width / 2
+                    color: sensorRow.modelData
+                           ? compact.widget.qualityColor(Sensors.quality(sensorRow.modelData.sensorType, sensorRow.modelData.value, sensorRow.modelData.unit))
+                           : Kirigami.Theme.disabledTextColor
+                }
 
-            Rectangle {
-                implicitWidth: Kirigami.Units.smallSpacing * 2
-                implicitHeight: implicitWidth
-                radius: width / 2
-                color: compact.reading2
-                       ? compact.widget.qualityColor(Sensors.quality(compact.reading2.sensorType, compact.reading2.value, compact.reading2.unit))
-                       : Kirigami.Theme.disabledTextColor
-            }
-
-            PlasmaComponents3.Label {
-                text: !compact.reading2 ? "–"
-                      : Sensors.formatValue(compact.reading2.sensorType, compact.reading2.value)
-                        + (compact.vertical ? "" : " " + Sensors.unitLabel(compact.reading2.unit))
+                PlasmaComponents3.Label {
+                    text: !sensorRow.modelData ? "–"
+                          : Sensors.formatValue(sensorRow.modelData.sensorType, sensorRow.modelData.value)
+                            + (compact.vertical ? "" : " " + Sensors.unitLabel(sensorRow.modelData.unit))
+                }
             }
         }
     }

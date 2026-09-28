@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The compact (panel) view now allows choosing between 1 and 4 sensors to
+  display, instead of being limited to exactly 1 or 2.
+
 ## [1.0.0] - 2026-09-28
 
 ### Added
