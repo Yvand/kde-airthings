@@ -1,0 +1,448 @@
+# French translation of the Airthings Plasma widget.
+# This file is distributed under the same license as the plasma_applet_com.github.yvand.airthings package.
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_com.github.yvand.airthings 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-27 18:21+0200\n"
+"PO-Revision-Date: 2026-09-27 11:30+0200\n"
+"Last-Translator: Yvan\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../package/contents/config/config.qml:6
+msgid "General"
+msgstr "Général"
+
+#: ../package/contents/config/config.qml:11
+msgid "Display"
+msgstr "Affichage"
+
+#: ../package/contents/config/config.qml:16
+msgid "History"
+msgstr "Historique"
+
+#: ../package/contents/ui/code/api.mjs:31
+msgid "Network error"
+msgstr "Erreur réseau"
+
+#: ../package/contents/ui/code/api.mjs:60
+msgid "Invalid response from server"
+msgstr "Réponse du serveur non valable"
+
+#: ../package/contents/ui/code/sensors.mjs:15
+msgid "Radon"
+msgstr "Radon"
+
+#: ../package/contents/ui/code/sensors.mjs:22
+msgid "CO₂"
+msgstr "CO₂"
+
+#: ../package/contents/ui/code/sensors.mjs:23
+msgid "VOC"
+msgstr "COV"
+
+#: ../package/contents/ui/code/sensors.mjs:24
+msgid "PM1"
+msgstr "PM1"
+
+#: ../package/contents/ui/code/sensors.mjs:25
+msgid "PM2.5"
+msgstr "PM2,5"
+
+#: ../package/contents/ui/code/sensors.mjs:26
+msgid "Humidity"
+msgstr "Humidité"
+
+#: ../package/contents/ui/code/sensors.mjs:28
+msgid "Temperature"
+msgstr "Température"
+
+#: ../package/contents/ui/code/sensors.mjs:35
+msgid "Pressure"
+msgstr "Pression"
+
+#: ../package/contents/ui/code/sensors.mjs:36
+msgid "Light"
+msgstr "Luminosité"
+
+#: ../package/contents/ui/ConfigDisplay.qml:29
+msgid "First shown sensor"
+msgstr "Premier capteur affiché"
+
+#: ../package/contents/ui/ConfigDisplay.qml:50
+msgid "Show sensors:"
+msgstr "Capteurs affichés :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:65
+msgid "Panel shows (1st sensor):"
+msgstr "Tableau affiche (1er capteur) :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:73
+msgid "Panel shows (2nd sensor):"
+msgstr "Tableau affiche (2e capteur) :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:85
+msgid "Layout:"
+msgstr "Disposition :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:87
+msgid "Grid"
+msgstr "Grille"
+
+#: ../package/contents/ui/ConfigDisplay.qml:93
+msgid "Vertical list"
+msgstr "Liste verticale"
+
+#: ../package/contents/ui/ConfigDisplay.qml:99
+msgid "Horizontal row"
+msgstr "Ligne horizontale"
+
+#: ../package/contents/ui/ConfigDisplay.qml:105
+msgid "Colors:"
+msgstr "Couleurs :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:107
+msgid "Follow Plasma theme"
+msgstr "Suivre le thème Plasma"
+
+#: ../package/contents/ui/ConfigDisplay.qml:113
+msgctxt "@option:radio color scheme"
+msgid "Light"
+msgstr "Clair"
+
+#: ../package/contents/ui/ConfigDisplay.qml:119
+msgctxt "@option:radio color scheme"
+msgid "Dark"
+msgstr "Sombre"
+
+#: ../package/contents/ui/ConfigDisplay.qml:130
+msgid "Trend lines:"
+msgstr "Courbes de tendance :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:131
+msgid "Show a trend line in each tile"
+msgstr "Afficher une courbe de tendance dans chaque tuile"
+
+#: ../package/contents/ui/ConfigDisplay.qml:135
+msgid "Trend period:"
+msgstr "Période de tendance :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:143
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "heure"
+msgstr[1] "heures"
+
+#: ../package/contents/ui/ConfigDisplay.qml:149
+msgid "Footer:"
+msgstr "Pied de page :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:150
+msgid "Show last update time"
+msgstr "Afficher l'heure de la dernière mise à jour"
+
+#: ../package/contents/ui/ConfigDisplay.qml:154
+msgid "Show battery level"
+msgstr "Afficher le niveau de la batterie"
+
+#: ../package/contents/ui/ConfigGeneral.qml:59
+msgid "No Airthings account found for these credentials"
+msgstr "Aucun compte Airthings trouvé pour ces identifiants"
+
+#: ../package/contents/ui/ConfigGeneral.qml:60
+#: ../package/contents/ui/main.qml:73
+msgid "Invalid client credentials"
+msgstr "Identifiants client non valables"
+
+#: ../package/contents/ui/ConfigGeneral.qml:61
+msgid "Error: %1"
+msgstr "Erreur : %1"
+
+#: ../package/contents/ui/ConfigGeneral.qml:69
+msgid "No devices found in this account"
+msgstr "Aucun appareil trouvé dans ce compte"
+
+#: ../package/contents/ui/ConfigGeneral.qml:73
+msgid "Found %1 device"
+msgid_plural "Found %1 devices"
+msgstr[0] "%1 appareil trouvé"
+msgstr[1] "%1 appareils trouvés"
+
+#: ../package/contents/ui/ConfigGeneral.qml:90
+msgid "Account:"
+msgstr "Compte :"
+
+#: ../package/contents/ui/ConfigGeneral.qml:94
+msgid "Connected (client ID %1…)"
+msgstr "Connecté (identifiant client %1…)"
+
+#: ../package/contents/ui/ConfigGeneral.qml:97
+msgid "Change Credentials…"
+msgstr "Modifier les identifiants…"
+
+#: ../package/contents/ui/ConfigGeneral.qml:97
+msgid "Connect to Airthings…"
+msgstr "Se connecter à Airthings…"
+
+#: ../package/contents/ui/ConfigGeneral.qml:105
+msgid "Device:"
+msgstr "Appareil :"
+
+#: ../package/contents/ui/ConfigGeneral.qml:113
+msgid "None"
+msgstr "Aucun"
+
+#: ../package/contents/ui/ConfigGeneral.qml:121
+msgid "Reload devices"
+msgstr "Recharger les appareils"
+
+#: ../package/contents/ui/ConfigGeneral.qml:140
+msgid "Refresh every:"
+msgstr "Actualiser toutes les :"
+
+#: ../package/contents/ui/ConfigGeneral.qml:147
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "minute"
+msgstr[1] "minutes"
+
+#: ../package/contents/ui/ConfigGeneral.qml:154
+msgid ""
+"The Airthings API allows 120 requests per hour. Devices upload new readings "
+"about every 5 minutes."
+msgstr ""
+"L'API Airthings autorise 120 requêtes par heure. Les appareils envoient de "
+"nouvelles mesures environ toutes les 5 minutes."
+
+#: ../package/contents/ui/ConfigGeneral.qml:159
+msgid "Units:"
+msgstr "Unités :"
+
+#: ../package/contents/ui/ConfigGeneral.qml:160
+msgid "Metric"
+msgstr "Métrique"
+
+#: ../package/contents/ui/ConfigGeneral.qml:160
+msgid "Imperial"
+msgstr "Impérial"
+
+#: ../package/contents/ui/ConfigGeneral.qml:192
+msgid "Airthings API Credentials"
+msgstr "Identifiants de l'API Airthings"
+
+#: ../package/contents/ui/ConfigGeneral.qml:198
+msgid "Connect"
+msgstr "Se connecter"
+
+#: ../package/contents/ui/ConfigGeneral.qml:220
+msgid "Client ID:"
+msgstr "Identifiant client :"
+
+#: ../package/contents/ui/ConfigGeneral.qml:228
+msgid "Client secret:"
+msgstr "Secret client :"
+
+#: ../package/contents/ui/ConfigGeneral.qml:239
+msgid ""
+"Create an API client (flow type: Client Credentials) in the <a "
+"href=\"%1\">Airthings dashboard</a>. The secret is stored unencrypted in "
+"your Plasma configuration."
+msgstr ""
+"Créez un client API (type de flux : Client Credentials) dans le <a "
+"href=\"%1\">tableau de bord Airthings</a>. Le secret est enregistré en clair "
+"dans votre configuration Plasma."
+
+#: ../package/contents/ui/ConfigGeneral.qml:259
+msgid "Connecting to Airthings…"
+msgstr "Connexion à Airthings…"
+
+#: ../package/contents/ui/ConfigHistory.qml:34
+msgid "Keep history for:"
+msgstr "Conserver l'historique pendant :"
+
+#: ../package/contents/ui/ConfigHistory.qml:41
+msgid "day"
+msgid_plural "days"
+msgstr[0] "jour"
+msgstr[1] "jours"
+
+#: ../package/contents/ui/ConfigHistory.qml:46
+msgid "Estimated size:"
+msgstr "Taille estimée :"
+
+#: ../package/contents/ui/ConfigHistory.qml:47
+msgid "About %1 sample"
+msgid_plural "About %1 samples"
+msgstr[0] "Environ %1 mesure"
+msgstr[1] "Environ %1 mesures"
+
+#: ../package/contents/ui/ConfigHistory.qml:51
+msgid "Stored now:"
+msgstr "Actuellement enregistré :"
+
+#: ../package/contents/ui/ConfigHistory.qml:52
+msgid "%1 sample"
+msgid_plural "%1 samples"
+msgstr[0] "%1 mesure"
+msgstr[1] "%1 mesures"
+
+#: ../package/contents/ui/ConfigHistory.qml:59
+msgid ""
+"History is recorded only while the widget is running, so periods when the "
+"computer was off appear as gaps. Values are stored in the units they were "
+"fetched in. Older samples are removed at the next refresh."
+msgstr ""
+"L'historique n'est enregistré que lorsque le composant graphique est en "
+"cours d'exécution : les périodes où l'ordinateur était éteint apparaissent "
+"comme des trous. Les valeurs sont enregistrées dans les unités dans "
+"lesquelles elles ont été récupérées. Les mesures plus anciennes sont "
+"supprimées lors de l'actualisation suivante."
+
+#: ../package/contents/ui/ConfigHistory.qml:63
+msgid "Device history:"
+msgstr "Historique de l'appareil :"
+
+#: ../package/contents/ui/ConfigHistory.qml:64
+msgid "Clear History…"
+msgstr "Effacer l'historique…"
+
+#: ../package/contents/ui/ConfigHistory.qml:73
+msgid "Clear History"
+msgstr "Effacer l'historique"
+
+#: ../package/contents/ui/ConfigHistory.qml:74
+msgid "Delete all stored readings of this device? This cannot be undone."
+msgstr ""
+"Supprimer toutes les mesures enregistrées de cet appareil ? Cette action est "
+"irréversible."
+
+#: ../package/contents/ui/DetailChart.qml:21
+msgid "24 hours"
+msgstr "24 heures"
+
+#: ../package/contents/ui/DetailChart.qml:22
+msgid "7 days"
+msgstr "7 jours"
+
+#: ../package/contents/ui/DetailChart.qml:23
+msgid "30 days"
+msgstr "30 jours"
+
+#: ../package/contents/ui/DetailChart.qml:24
+msgid "90 days"
+msgstr "90 jours"
+
+#: ../package/contents/ui/DetailChart.qml:52
+msgid "Back"
+msgstr "Retour"
+
+#: ../package/contents/ui/DetailChart.qml:129
+#: ../package/contents/ui/SensorTile.qml:109
+msgid "Collecting history…"
+msgstr "Collecte de l'historique…"
+
+#: ../package/contents/ui/DetailChart.qml:144
+msgid "Now"
+msgstr "Maintenant"
+
+#: ../package/contents/ui/DetailChart.qml:158
+msgid "Min"
+msgstr "Min."
+
+#: ../package/contents/ui/DetailChart.qml:159
+msgid "Average"
+msgstr "Moyenne"
+
+#: ../package/contents/ui/DetailChart.qml:160
+msgid "Max"
+msgstr "Max."
+
+#: ../package/contents/ui/FullRepresentation.qml:63
+#: ../package/contents/ui/main.qml:154
+msgid "Airthings"
+msgstr "Airthings"
+
+#: ../package/contents/ui/FullRepresentation.qml:111
+msgid "Good"
+msgstr "Bon"
+
+#: ../package/contents/ui/FullRepresentation.qml:112
+msgid "Fair"
+msgstr "Moyen"
+
+#: ../package/contents/ui/FullRepresentation.qml:113
+msgid "Poor"
+msgstr "Mauvais"
+
+#: ../package/contents/ui/FullRepresentation.qml:153
+msgid "Fetched %1"
+msgstr "Récupéré à %1"
+
+#: ../package/contents/ui/FullRepresentation.qml:155
+msgid "sample %1"
+msgstr "mesure de %1"
+
+#: ../package/contents/ui/FullRepresentation.qml:167
+#, no-javascript-format
+msgid "Battery %1%"
+msgstr "Batterie %1 %"
+
+#: ../package/contents/ui/FullRepresentation.qml:205
+msgid "Not configured"
+msgstr "Non configuré"
+
+#: ../package/contents/ui/FullRepresentation.qml:206
+msgid "Cannot load readings"
+msgstr "Impossible de charger les mesures"
+
+#: ../package/contents/ui/FullRepresentation.qml:207
+msgid "Loading…"
+msgstr "Chargement…"
+
+#: ../package/contents/ui/FullRepresentation.qml:208
+msgid "No readings to show"
+msgstr "Aucune mesure à afficher"
+
+#: ../package/contents/ui/FullRepresentation.qml:209
+msgid "Enter your Airthings client credentials and choose a device."
+msgstr "Saisissez vos identifiants client Airthings et choisissez un appareil."
+
+#: ../package/contents/ui/FullRepresentation.qml:216
+msgid "Configure…"
+msgstr "Configurer…"
+
+#: ../package/contents/ui/main.qml:76
+msgid "Cannot reach the Airthings API. Check your network connection."
+msgstr ""
+"Impossible de joindre l'API Airthings. Vérifiez votre connexion réseau."
+
+#: ../package/contents/ui/main.qml:79
+msgid ""
+"Rate limit reached (120 requests per hour). Increase the refresh interval."
+msgstr ""
+"Limite de requêtes atteinte (120 par heure). Augmentez l'intervalle "
+"d'actualisation."
+
+#: ../package/contents/ui/main.qml:81
+msgid "Airthings API error %1: %2"
+msgstr "Erreur de l'API Airthings %1 : %2"
+
+#: ../package/contents/ui/main.qml:94
+msgid "No readings available for this device yet"
+msgstr "Aucune mesure disponible pour cet appareil pour le moment"
+
+#: ../package/contents/ui/main.qml:147
+msgid "Refresh now"
+msgstr "Actualiser maintenant"
+
+#: ../package/contents/ui/main.qml:157
+msgid "Fetched %1 · sample recorded %2"
+msgstr "Récupéré à %1 · mesure enregistrée à %2"
+
+#~ msgid "Min %1 · Average %2 · Max %3"
+#~ msgstr "Min. %1 · Moyenne %2 · Max. %3"

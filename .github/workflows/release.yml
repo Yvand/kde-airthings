@@ -1,0 +1,158 @@
+name: Release
+
+# Two ways to publish a release:
+#  - push an annotated tag vX.Y.Z (or vX.Y.Z-rc.1) whose version matches package/metadata.json
+#    (scripts/release.sh does the bump, commit, tag and push for you);
+#  - run this workflow manually: it bumps package/metadata.json on main, commits, tags and releases.
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-*"
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Version part to bump (patch finalizes a current pre-release)"
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+      prerelease:
+        description: "Optional pre-release suffix, e.g. rc.1 (leave empty for a final release)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  METADATA: package/metadata.json
+
+jobs:
+  # Manual runs only: bump the version on main and create the tag.
+  # A tag pushed with GITHUB_TOKEN does not trigger a new workflow run,
+  # so the build and release jobs below continue from this job's output.
+  prepare:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.bump.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Bump version, commit and tag
+        id: bump
+        env:
+          BUMP: ${{ inputs.bump }}
+          PRERELEASE: ${{ inputs.prerelease }}
+        run: |
+          set -euo pipefail
+          current=$(sed -n 's/.*"Version": *"\([^"]*\)".*/\1/p' "$METADATA")
+          base=${current%%-*}
+          IFS=. read -r major minor patch <<< "$base"
+
+          case "$BUMP" in
+            major) major=$((major + 1)); minor=0; patch=0 ;;
+            minor) minor=$((minor + 1)); patch=0 ;;
+            patch) [[ "$current" == *-* ]] || patch=$((patch + 1)) ;;
+          esac
+          version="$major.$minor.$patch"
+          if [[ -n "$PRERELEASE" ]]; then
+            [[ "$PRERELEASE" =~ ^[0-9A-Za-z.]+$ ]] || { echo "::error::Invalid pre-release suffix '$PRERELEASE'"; exit 1; }
+            version="$version-$PRERELEASE"
+          fi
+          tag="v$version"
+
+          if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+            echo "::error::Tag $tag already exists"
+            exit 1
+          fi
+
+          sed -i -E "s/(\"Version\": *\")[^\"]*(\")/\1$version\2/" "$METADATA"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Release $tag"
+          git tag -a "$tag" -m "Release $tag"
+          git push origin main "$tag"
+
+          echo "Bumped $current -> $version"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: prepare
+    # Runs after prepare, or on its own when prepare is skipped (tag push).
+    if: ${{ !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.tag || github.ref }}
+
+      - name: Check tag matches metadata.json
+        id: version
+        env:
+          TAG: ${{ needs.prepare.outputs.tag || github.ref_name }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]]; then
+            echo "::error::Tag '$TAG' is not of the form vX.Y.Z or vX.Y.Z-suffix"
+            exit 1
+          fi
+          version=$(sed -n 's/.*"Version": *"\([^"]*\)".*/\1/p' "$METADATA")
+          if [[ "v$version" != "$TAG" ]]; then
+            echo "::error file=$METADATA::Version $version in metadata.json does not match tag $TAG"
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gettext
+
+      - name: Compile translations
+        run: translate/build.sh
+
+      - name: Package .plasmoid
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          id=$(sed -n 's/.*"Id": *"\([^"]*\)".*/\1/p' "$METADATA")
+          mkdir -p dist
+          # metadata.json must be at the root of the archive.
+          (cd package && zip -r "../dist/$id-$VERSION.plasmoid" .)
+          unzip -l dist/*.plasmoid
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plasmoid
+          path: dist/*.plasmoid
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: ${{ !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: plasmoid
+          path: dist
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.build.outputs.tag }}
+        run: |
+          set -euo pipefail
+          args=(--repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes --title "$TAG")
+          [[ "$TAG" == *-* ]] && args+=(--prerelease)
+          gh release create "$TAG" "${args[@]}" dist/*.plasmoid

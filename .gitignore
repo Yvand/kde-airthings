@@ -1,0 +1,4 @@
+# Compiled translations (built by translate/build.sh, and in CI for releases)
+package/contents/locale/
+# Release artifacts
+dist/

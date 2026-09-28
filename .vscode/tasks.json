@@ -1,0 +1,267 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Translate: Extract strings",
+            "detail": "Extract i18n() strings from QML/JS into template.pot and merge into .po files",
+            "type": "shell",
+            "command": "nix-shell",
+            "args": [
+                "-p", "gettext",
+                "--run", "translate/merge.sh"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Translate: Build .mo files",
+            "detail": "Compile .po files into binary .mo translation files",
+            "type": "shell",
+            "command": "nix-shell",
+            "args": [
+                "-p", "gettext",
+                "--run", "translate/build.sh"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Translate: Merge + Build",
+            "detail": "Extract strings and compile translations (full cycle)",
+            "type": "shell",
+            "command": "nix-shell -p gettext --run \"translate/merge.sh && translate/build.sh\" && echo \"✓ Translations ready\"",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Lint: Check QML syntax",
+            "detail": "Validate QML files for syntax errors",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "qmllint -I $(qtpaths6 --query QT_INSTALL_QML) package/contents/ui/*.qml 2>&1 | grep -E '^(Warning|Error)' | grep -v 'Unqualified access' || echo '✓ QML looks good'"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Package: Install/Update",
+            "detail": "Install or update the widget to ~/.local/share/plasma/plasmoids/",
+            "type": "shell",
+            "command": "kpackagetool6",
+            "args": [
+                "-t", "Plasma/Applet",
+                "-u", "package"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "dependsOn": ["Translate: Build .mo files"]
+        },
+        {
+            "label": "Package: Install + Restart Plasma",
+            "detail": "Install/update the widget, then restart plasmashell so panels load the new code",
+            "type": "shell",
+            "command": "kpackagetool6 -t Plasma/Applet -u package && systemctl --user restart plasma-plasmashell && echo \"✓ Plasma restarted\"",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "dependsOn": ["Translate: Build .mo files"]
+        },
+        {
+            "label": "Package: Show info",
+            "detail": "Display information about the installed widget",
+            "type": "shell",
+            "command": "kpackagetool6",
+            "args": [
+                "-t", "Plasma/Applet",
+                "-s", "com.github.yvand.airthings"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Package: Uninstall",
+            "detail": "Remove the widget from the system",
+            "type": "shell",
+            "command": "kpackagetool6",
+            "args": [
+                "-t", "Plasma/Applet",
+                "-r", "com.github.yvand.airthings"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Run: Widget (English)",
+            "detail": "Launch the widget in a standalone window (English locale)",
+            "type": "shell",
+            "command": "plasmawindowed",
+            "args": [
+                "com.github.yvand.airthings"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "Run: Widget (French)",
+            "detail": "Launch the widget in a standalone window (French locale)",
+            "type": "shell",
+            "command": "env",
+            "args": [
+                "LANGUAGE=fr",
+                "LANG=fr_FR.UTF-8",
+                "plasmawindowed",
+                "com.github.yvand.airthings"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "Run: Full cycle (Translate + Install + Run)",
+            "detail": "Complete dev cycle: extract/build translations, install, and run",
+            "type": "shell",
+            "command": "nix-shell -p gettext --run \"translate/merge.sh && translate/build.sh\" && kpackagetool6 -t Plasma/Applet -u package && echo \"✓ Ready\" && plasmawindowed com.github.yvand.airthings",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "Git: Status",
+            "detail": "Show git status (changed files, commits ahead)",
+            "type": "shell",
+            "command": "git",
+            "args": [
+                "status", "--short", "--branch"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Git: Add all and commit",
+            "detail": "Stage all changes and create a commit",
+            "type": "shell",
+            "command": "git add -A && git commit -m \"Update widget\" && echo \"✓ Committed\"",
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Git: Log (recent)",
+            "detail": "Show the last 10 commits",
+            "type": "shell",
+            "command": "git",
+            "args": [
+                "log", "--oneline", "-10"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Release: Bump version + tag + push",
+            "detail": "Set the version in metadata.json, commit, tag vX.Y.Z and push (triggers the GitHub release workflow)",
+            "type": "shell",
+            "command": "scripts/release.sh",
+            "args": ["${input:releaseVersion}"],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "releaseVersion",
+            "type": "promptString",
+            "description": "Version to release (X.Y.Z or X.Y.Z-rc.1)"
+        }
+    ]
+}

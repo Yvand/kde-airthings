@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="clientId" type="String"/>
+    <entry name="clientSecret" type="String"/>
+    <entry name="accountId" type="String"/>
+    <entry name="deviceSerial" type="String"/>
+    <entry name="deviceName" type="String"/>
+    <entry name="deviceSensors" type="StringList"/>
+    <entry name="refreshMinutes" type="Int">
+      <default>5</default>
+      <min>1</min>
+      <max>60</max>
+    </entry>
+    <entry name="unitSystem" type="String">
+      <default>metric</default>
+    </entry>
+  </group>
+
+  <group name="Display">
+    <!-- Empty list means "show every sensor". -->
+    <entry name="visibleSensors" type="StringList"/>
+    <!-- First sensor to show in panel (empty means "first shown sensor"). -->
+    <entry name="compactSensor1" type="String"/>
+    <!-- Second sensor to show in panel (empty means "none"). -->
+    <entry name="compactSensor2" type="String"/>
+    <!-- Deprecated: use compactSensor1 and compactSensor2 instead. -->
+    <entry name="compactSensor" type="String"/>
+    <!-- grid, list or row -->
+    <entry name="layoutMode" type="String">
+      <default>grid</default>
+    </entry>
+    <!-- system, light or dark -->
+    <entry name="themeMode" type="String">
+      <default>system</default>
+    </entry>
+    <entry name="showSparklines" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="sparklineHours" type="Int">
+      <default>24</default>
+      <min>1</min>
+      <max>2160</max>
+    </entry>
+    <entry name="showBattery" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="showLastUpdated" type="Bool">
+      <default>true</default>
+    </entry>
+  </group>
+
+  <group name="History">
+    <entry name="historyDays" type="Int">
+      <default>7</default>
+      <min>1</min>
+      <max>90</max>
+    </entry>
+  </group>
+</kcfg>

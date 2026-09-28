@@ -1,0 +1,15 @@
+{
+   "chat.tools.terminal.autoApprove": {
+      "qtpaths6": true,
+      "mkdir": true,
+      "mv": true,
+      "kpackagetool6": true,
+      "timeout": true,
+      "uniq": true,
+      "command": true,
+      "true": true,
+      "nix-shell": true,
+      "printf": true,
+      "plasmawindowed": true
+   }
+}

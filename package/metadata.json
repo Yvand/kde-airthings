@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Yvan Duhamel",
+                "Email": "yvandev@outlook.fr"
+            }
+        ],
+        "Category": "Environment and Weather",
+        "Description": "Air quality readings and history from your Airthings device",
+        "Description[fr]": "Mesures et historique de la qualité de l'air de votre appareil Airthings",
+        "Icon": "weather-fog",
+        "Id": "com.github.yvand.airthings",
+        "License": "GPL-3.0-or-later",
+        "Name": "Airthings device data visualizer",
+        "Name[fr]": "Visualisation des données des appareils Airthings",
+        "Version": "0.1.0",
+        "Website": "https://github.com/Yvand/kde-airthings"
+    },
+    "KPackageStructure": "Plasma/Applet",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

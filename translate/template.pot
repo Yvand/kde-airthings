@@ -1,0 +1,434 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the plasma_applet_com.github.yvand.airthings package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_com.github.yvand.airthings 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-27 18:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../package/contents/config/config.qml:6
+msgid "General"
+msgstr ""
+
+#: ../package/contents/config/config.qml:11
+msgid "Display"
+msgstr ""
+
+#: ../package/contents/config/config.qml:16
+msgid "History"
+msgstr ""
+
+#: ../package/contents/ui/code/api.mjs:31
+msgid "Network error"
+msgstr ""
+
+#: ../package/contents/ui/code/api.mjs:60
+msgid "Invalid response from server"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:15
+msgid "Radon"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:22
+msgid "CO₂"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:23
+msgid "VOC"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:24
+msgid "PM1"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:25
+msgid "PM2.5"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:26
+msgid "Humidity"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:28
+msgid "Temperature"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:35
+msgid "Pressure"
+msgstr ""
+
+#: ../package/contents/ui/code/sensors.mjs:36
+msgid "Light"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:29
+msgid "First shown sensor"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:50
+msgid "Show sensors:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:65
+msgid "Panel shows (1st sensor):"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:73
+msgid "Panel shows (2nd sensor):"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:85
+msgid "Layout:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:87
+msgid "Grid"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:93
+msgid "Vertical list"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:99
+msgid "Horizontal row"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:105
+msgid "Colors:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:107
+msgid "Follow Plasma theme"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:113
+msgctxt "@option:radio color scheme"
+msgid "Light"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:119
+msgctxt "@option:radio color scheme"
+msgid "Dark"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:130
+msgid "Trend lines:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:131
+msgid "Show a trend line in each tile"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:135
+msgid "Trend period:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:143
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:149
+msgid "Footer:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:150
+msgid "Show last update time"
+msgstr ""
+
+#: ../package/contents/ui/ConfigDisplay.qml:154
+msgid "Show battery level"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:59
+msgid "No Airthings account found for these credentials"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:60
+#: ../package/contents/ui/main.qml:73
+msgid "Invalid client credentials"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:61
+msgid "Error: %1"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:69
+msgid "No devices found in this account"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:73
+msgid "Found %1 device"
+msgid_plural "Found %1 devices"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:90
+msgid "Account:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:94
+msgid "Connected (client ID %1…)"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:97
+msgid "Change Credentials…"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:97
+msgid "Connect to Airthings…"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:105
+msgid "Device:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:113
+msgid "None"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:121
+msgid "Reload devices"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:140
+msgid "Refresh every:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:147
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:154
+msgid ""
+"The Airthings API allows 120 requests per hour. Devices upload new readings "
+"about every 5 minutes."
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:159
+msgid "Units:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:160
+msgid "Metric"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:160
+msgid "Imperial"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:192
+msgid "Airthings API Credentials"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:198
+msgid "Connect"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:220
+msgid "Client ID:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:228
+msgid "Client secret:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:239
+msgid ""
+"Create an API client (flow type: Client Credentials) in the <a "
+"href=\"%1\">Airthings dashboard</a>. The secret is stored unencrypted in "
+"your Plasma configuration."
+msgstr ""
+
+#: ../package/contents/ui/ConfigGeneral.qml:259
+msgid "Connecting to Airthings…"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:34
+msgid "Keep history for:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:41
+msgid "day"
+msgid_plural "days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../package/contents/ui/ConfigHistory.qml:46
+msgid "Estimated size:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:47
+msgid "About %1 sample"
+msgid_plural "About %1 samples"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../package/contents/ui/ConfigHistory.qml:51
+msgid "Stored now:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:52
+msgid "%1 sample"
+msgid_plural "%1 samples"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../package/contents/ui/ConfigHistory.qml:59
+msgid ""
+"History is recorded only while the widget is running, so periods when the "
+"computer was off appear as gaps. Values are stored in the units they were "
+"fetched in. Older samples are removed at the next refresh."
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:63
+msgid "Device history:"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:64
+msgid "Clear History…"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:73
+msgid "Clear History"
+msgstr ""
+
+#: ../package/contents/ui/ConfigHistory.qml:74
+msgid "Delete all stored readings of this device? This cannot be undone."
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:21
+msgid "24 hours"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:22
+msgid "7 days"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:23
+msgid "30 days"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:24
+msgid "90 days"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:52
+msgid "Back"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:129
+#: ../package/contents/ui/SensorTile.qml:109
+msgid "Collecting history…"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:144
+msgid "Now"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:158
+msgid "Min"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:159
+msgid "Average"
+msgstr ""
+
+#: ../package/contents/ui/DetailChart.qml:160
+msgid "Max"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:63
+#: ../package/contents/ui/main.qml:154
+msgid "Airthings"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:111
+msgid "Good"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:112
+msgid "Fair"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:113
+msgid "Poor"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:153
+msgid "Fetched %1"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:155
+msgid "sample %1"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:167
+#, no-javascript-format
+msgid "Battery %1%"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:205
+msgid "Not configured"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:206
+msgid "Cannot load readings"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:207
+msgid "Loading…"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:208
+msgid "No readings to show"
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:209
+msgid "Enter your Airthings client credentials and choose a device."
+msgstr ""
+
+#: ../package/contents/ui/FullRepresentation.qml:216
+msgid "Configure…"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:76
+msgid "Cannot reach the Airthings API. Check your network connection."
+msgstr ""
+
+#: ../package/contents/ui/main.qml:79
+msgid ""
+"Rate limit reached (120 requests per hour). Increase the refresh interval."
+msgstr ""
+
+#: ../package/contents/ui/main.qml:81
+msgid "Airthings API error %1: %2"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:94
+msgid "No readings available for this device yet"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:147
+msgid "Refresh now"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:157
+msgid "Fetched %1 · sample recorded %2"
+msgstr ""
