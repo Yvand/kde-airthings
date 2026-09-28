@@ -39,10 +39,14 @@ MouseArea {
     hoverEnabled: true
     onClicked: widget.expanded = !widget.expanded
 
-    RowLayout {
+    // Horizontal panels lay sensors out side by side; vertical (thin) panels
+    // stack them instead of squeezing everything into a narrow row.
+    GridLayout {
         id: row
         anchors.centerIn: parent
-        spacing: Kirigami.Units.smallSpacing
+        columns: compact.vertical ? 1 : compact.slots.length
+        rowSpacing: Kirigami.Units.smallSpacing
+        columnSpacing: Kirigami.Units.largeSpacing
 
         Repeater {
             model: compact.slots
@@ -50,8 +54,19 @@ MouseArea {
             delegate: RowLayout {
                 id: sensorRow
                 required property var modelData
+                required property int index
 
                 spacing: Kirigami.Units.smallSpacing
+
+                // A thin divider between sensors makes multi-sensor panels
+                // (up to 4) easier to scan than spacing alone.
+                Kirigami.Separator {
+                    visible: sensorRow.index > 0
+                    Layout.fillHeight: visible && !compact.vertical
+                    Layout.fillWidth: visible && compact.vertical
+                    Layout.preferredHeight: !visible ? 0 : (compact.vertical ? 1 : -1)
+                    Layout.preferredWidth: !visible ? 0 : (compact.vertical ? -1 : 1)
+                }
 
                 Rectangle {
                     implicitWidth: Kirigami.Units.smallSpacing * 2
@@ -67,6 +82,15 @@ MouseArea {
                           : Sensors.formatValue(sensorRow.modelData.sensorType, sensorRow.modelData.value)
                             + (compact.vertical ? "" : " " + Sensors.unitLabel(sensorRow.modelData.unit))
                 }
+
+                // Hover tooltip names the sensor, since with several dots and
+                // numbers side by side it's not always obvious which is which.
+                HoverHandler {
+                    id: hover
+                }
+                PlasmaComponents3.ToolTip.text: sensorRow.modelData ? i18n(Sensors.info(sensorRow.modelData.sensorType).name) : ""
+                PlasmaComponents3.ToolTip.visible: hover.hovered && sensorRow.modelData !== null
+                PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
             }
         }
     }
