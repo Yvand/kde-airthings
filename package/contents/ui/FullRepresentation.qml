@@ -152,7 +152,7 @@ Item {
                     text: {
                         const fetched = i18n("Fetched %1", new Date(full.widget.lastFetchedMs).toLocaleTimeString(Qt.locale(), Locale.ShortFormat));
                         return full.widget.lastUpdatedMs > 0
-                               ? fetched + " · " + i18n("sample %1", new Date(full.widget.lastUpdatedMs).toLocaleTimeString(Qt.locale(), Locale.ShortFormat))
+                               ? fetched + " · " + i18n("sample recorded %1", new Date(full.widget.lastUpdatedMs).toLocaleTimeString(Qt.locale(), Locale.ShortFormat))
                                : fetched;
                     }
                     color: Kirigami.Theme.disabledTextColor

@@ -384,8 +384,8 @@ msgid "Fetched %1"
 msgstr "Récupéré à %1"
 
 #: ../package/contents/ui/FullRepresentation.qml:155
-msgid "sample %1"
-msgstr "mesure de %1"
+msgid "sample recorded %1"
+msgstr "mesure enregistrée à %1"
 
 #: ../package/contents/ui/FullRepresentation.qml:167
 #, no-javascript-format
