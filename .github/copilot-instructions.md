@@ -33,6 +33,17 @@ commands):
   translations, zips `package/` into a `.plasmoid`, and publishes it as a
   release asset — `metadata.json`'s `Version` must match the tag.
 
+## Before opening a PR
+
+Add a bullet to the `[Unreleased]` section of `CHANGELOG.md` describing the
+change, using the existing Keep a Changelog subsections (`### Added` /
+`### Changed` / `### Fixed` / `### Removed`) — see existing dated sections in
+that file for the expected tone and detail. A CI check
+(`.github/workflows/changelog-check.yml`) fails PRs targeting `main` that
+don't touch `CHANGELOG.md`; the only sanctioned bypass is adding the
+`skip-changelog` label (e.g. for changes with no user-visible effect), not
+silently omitting the entry.
+
 ## Architecture
 
 - **`main.qml`** is the root `PlasmoidItem` and owns all shared state: the

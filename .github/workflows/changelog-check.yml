@@ -1,0 +1,35 @@
+name: Changelog
+
+# Requires every PR targeting main to add an entry to CHANGELOG.md, so the
+# [Unreleased] section stays accurate for the next release. Add the
+# "skip-changelog" label to a PR to bypass this (e.g. changes with no
+# user-visible effect).
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    branches: [main]
+
+jobs:
+  changelog:
+    name: Changelog updated
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'skip-changelog') }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check CHANGELOG.md was updated
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          if git diff --name-only "$BASE_SHA" HEAD | grep -qx "CHANGELOG.md"; then
+            echo "CHANGELOG.md was updated."
+          else
+            echo "::error::This PR does not update CHANGELOG.md. Add an entry" \
+              "under the [Unreleased] section, or apply the 'skip-changelog'" \
+              "label if this change has no user-visible effect."
+            exit 1
+          fi

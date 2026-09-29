@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Repository instructions for AI coding agents
+  (`.github/copilot-instructions.md`), covering build/lint/run/release
+  commands, high-level architecture, and key conventions.
+- CI check that fails PRs targeting `main` which don't update
+  `CHANGELOG.md`, unless labeled `skip-changelog`.
+
 ## [1.1.0] - 2026-09-28
 
 ### Fixed
