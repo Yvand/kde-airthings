@@ -12,6 +12,7 @@ your desktop panel or desktop.
 - Compact panel view with an at-a-glance summary of your device's readings.
 - Full (expanded) view showing every selected sensor, its current value,
   quality level (good / fair / poor) and a sparkline history chart.
+- Configurable good and fair value ranges for each classified sensor.
 - Detailed per-sensor history chart on demand.
 - Supports the sensors reported by Airthings devices, including:
   - Radon (short-term average)

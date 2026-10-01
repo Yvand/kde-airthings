@@ -83,7 +83,7 @@ MouseArea {
                     implicitHeight: implicitWidth
                     radius: width / 2
                     color: sensorRow.reading
-                           ? compact.widget.qualityColor(Sensors.quality(sensorRow.reading.sensorType, sensorRow.reading.value, sensorRow.reading.unit))
+                           ? compact.widget.qualityColor(compact.widget.sensorQuality(sensorRow.reading.sensorType, sensorRow.reading.value, sensorRow.reading.unit))
                            : Kirigami.Theme.disabledTextColor
                 }
 

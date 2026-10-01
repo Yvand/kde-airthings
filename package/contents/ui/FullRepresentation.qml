@@ -106,7 +106,7 @@ Item {
                             name: i18n(Sensors.info(modelData.sensorType).name)
                             valueText: Sensors.formatValue(modelData.sensorType, modelData.value)
                             unitText: Sensors.unitLabel(modelData.unit)
-                            readonly property string quality: Sensors.quality(modelData.sensorType, modelData.value, modelData.unit)
+                            readonly property string quality: full.widget.sensorQuality(modelData.sensorType, modelData.value, modelData.unit)
                             qualityColor: full.widget.qualityColor(quality)
                             qualityLabel: quality === "good" ? i18n("Good")
                                         : quality === "fair" ? i18n("Fair")
