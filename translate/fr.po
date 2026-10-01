@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_com.github.yvand.airthings 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-27 18:21+0200\n"
+"POT-Creation-Date: 2026-10-01 11:22+0200\n"
 "PO-Revision-Date: 2026-09-27 11:30+0200\n"
 "Last-Translator: Yvan\n"
 "Language-Team: French\n"
@@ -23,6 +23,10 @@ msgid "Display"
 msgstr "Affichage"
 
 #: ../package/contents/config/config.qml:16
+msgid "Sensor Levels"
+msgstr "Niveaux des capteurs"
+
+#: ../package/contents/config/config.qml:21
 msgid "History"
 msgstr "Historique"
 
@@ -30,123 +34,136 @@ msgstr "Historique"
 msgid "Network error"
 msgstr "Erreur réseau"
 
-#: ../package/contents/ui/code/api.mjs:60
+#: ../package/contents/ui/code/api.mjs:75
 msgid "Invalid response from server"
 msgstr "Réponse du serveur non valable"
 
-#: ../package/contents/ui/code/sensors.mjs:15
+#: ../package/contents/ui/code/sensors.mjs:17
 msgid "Radon"
 msgstr "Radon"
 
-#: ../package/contents/ui/code/sensors.mjs:22
+#: ../package/contents/ui/code/sensors.mjs:21
 msgid "CO₂"
 msgstr "CO₂"
 
-#: ../package/contents/ui/code/sensors.mjs:23
+#: ../package/contents/ui/code/sensors.mjs:22
 msgid "VOC"
 msgstr "COV"
 
-#: ../package/contents/ui/code/sensors.mjs:24
+#: ../package/contents/ui/code/sensors.mjs:23
 msgid "PM1"
 msgstr "PM1"
 
-#: ../package/contents/ui/code/sensors.mjs:25
+#: ../package/contents/ui/code/sensors.mjs:24
 msgid "PM2.5"
 msgstr "PM2,5"
 
-#: ../package/contents/ui/code/sensors.mjs:26
+#: ../package/contents/ui/code/sensors.mjs:25
 msgid "Humidity"
 msgstr "Humidité"
 
-#: ../package/contents/ui/code/sensors.mjs:28
+#: ../package/contents/ui/code/sensors.mjs:27
 msgid "Temperature"
 msgstr "Température"
 
-#: ../package/contents/ui/code/sensors.mjs:35
+#: ../package/contents/ui/code/sensors.mjs:31
 msgid "Pressure"
 msgstr "Pression"
 
-#: ../package/contents/ui/code/sensors.mjs:36
+#: ../package/contents/ui/code/sensors.mjs:32
 msgid "Light"
 msgstr "Luminosité"
 
-#: ../package/contents/ui/ConfigDisplay.qml:29
+#: ../package/contents/ui/ConfigDisplay.qml:28
 msgid "First shown sensor"
 msgstr "Premier capteur affiché"
 
-#: ../package/contents/ui/ConfigDisplay.qml:50
+#: ../package/contents/ui/ConfigDisplay.qml:30
+#: ../package/contents/ui/ConfigGeneral.qml:113
+msgid "None"
+msgstr "Aucun"
+
+#: ../package/contents/ui/ConfigDisplay.qml:65
 msgid "Show sensors:"
 msgstr "Capteurs affichés :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:65
+#: ../package/contents/ui/ConfigDisplay.qml:80
 msgid "Panel shows (1st sensor):"
 msgstr "Tableau affiche (1er capteur) :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:73
+#: ../package/contents/ui/ConfigDisplay.qml:88
 msgid "Panel shows (2nd sensor):"
 msgstr "Tableau affiche (2e capteur) :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:85
+#: ../package/contents/ui/ConfigDisplay.qml:96
+msgid "Panel shows (3rd sensor):"
+msgstr "Tableau affiche (3e capteur) :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:104
+msgid "Panel shows (4th sensor):"
+msgstr "Tableau affiche (4e capteur) :"
+
+#: ../package/contents/ui/ConfigDisplay.qml:116
 msgid "Layout:"
 msgstr "Disposition :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:87
+#: ../package/contents/ui/ConfigDisplay.qml:118
 msgid "Grid"
 msgstr "Grille"
 
-#: ../package/contents/ui/ConfigDisplay.qml:93
+#: ../package/contents/ui/ConfigDisplay.qml:124
 msgid "Vertical list"
 msgstr "Liste verticale"
 
-#: ../package/contents/ui/ConfigDisplay.qml:99
+#: ../package/contents/ui/ConfigDisplay.qml:130
 msgid "Horizontal row"
 msgstr "Ligne horizontale"
 
-#: ../package/contents/ui/ConfigDisplay.qml:105
+#: ../package/contents/ui/ConfigDisplay.qml:136
 msgid "Colors:"
 msgstr "Couleurs :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:107
+#: ../package/contents/ui/ConfigDisplay.qml:138
 msgid "Follow Plasma theme"
 msgstr "Suivre le thème Plasma"
 
-#: ../package/contents/ui/ConfigDisplay.qml:113
+#: ../package/contents/ui/ConfigDisplay.qml:144
 msgctxt "@option:radio color scheme"
 msgid "Light"
 msgstr "Clair"
 
-#: ../package/contents/ui/ConfigDisplay.qml:119
+#: ../package/contents/ui/ConfigDisplay.qml:150
 msgctxt "@option:radio color scheme"
 msgid "Dark"
 msgstr "Sombre"
 
-#: ../package/contents/ui/ConfigDisplay.qml:130
+#: ../package/contents/ui/ConfigDisplay.qml:161
 msgid "Trend lines:"
 msgstr "Courbes de tendance :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:131
+#: ../package/contents/ui/ConfigDisplay.qml:162
 msgid "Show a trend line in each tile"
 msgstr "Afficher une courbe de tendance dans chaque tuile"
 
-#: ../package/contents/ui/ConfigDisplay.qml:135
+#: ../package/contents/ui/ConfigDisplay.qml:166
 msgid "Trend period:"
 msgstr "Période de tendance :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:143
+#: ../package/contents/ui/ConfigDisplay.qml:174
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "heure"
 msgstr[1] "heures"
 
-#: ../package/contents/ui/ConfigDisplay.qml:149
+#: ../package/contents/ui/ConfigDisplay.qml:180
 msgid "Footer:"
 msgstr "Pied de page :"
 
-#: ../package/contents/ui/ConfigDisplay.qml:150
+#: ../package/contents/ui/ConfigDisplay.qml:181
 msgid "Show last update time"
 msgstr "Afficher l'heure de la dernière mise à jour"
 
-#: ../package/contents/ui/ConfigDisplay.qml:154
+#: ../package/contents/ui/ConfigDisplay.qml:185
 msgid "Show battery level"
 msgstr "Afficher le niveau de la batterie"
 
@@ -155,7 +172,7 @@ msgid "No Airthings account found for these credentials"
 msgstr "Aucun compte Airthings trouvé pour ces identifiants"
 
 #: ../package/contents/ui/ConfigGeneral.qml:60
-#: ../package/contents/ui/main.qml:73
+#: ../package/contents/ui/main.qml:79
 msgid "Invalid client credentials"
 msgstr "Identifiants client non valables"
 
@@ -192,10 +209,6 @@ msgstr "Se connecter à Airthings…"
 #: ../package/contents/ui/ConfigGeneral.qml:105
 msgid "Device:"
 msgstr "Appareil :"
-
-#: ../package/contents/ui/ConfigGeneral.qml:113
-msgid "None"
-msgstr "Aucun"
 
 #: ../package/contents/ui/ConfigGeneral.qml:121
 msgid "Reload devices"
@@ -321,6 +334,18 @@ msgstr ""
 "Supprimer toutes les mesures enregistrées de cet appareil ? Cette action est "
 "irréversible."
 
+#: ../package/contents/ui/ConfigSensorLevels.qml:117
+msgid ""
+"Customize the inclusive value ranges used to classify readings. Values "
+"outside the fair range are shown as poor."
+msgstr ""
+"Personnalisez les plages de valeurs inclusives utilisées pour classer les "
+"mesures. Les valeurs hors de la plage moyenne sont indiquées comme mauvaises."
+
+#: ../package/contents/ui/ConfigSensorLevels.qml:137
+msgid "Reset All Levels"
+msgstr "Réinitialiser tous les niveaux"
+
 #: ../package/contents/ui/DetailChart.qml:21
 msgid "24 hours"
 msgstr "24 heures"
@@ -363,15 +388,17 @@ msgid "Max"
 msgstr "Max."
 
 #: ../package/contents/ui/FullRepresentation.qml:63
-#: ../package/contents/ui/main.qml:154
+#: ../package/contents/ui/main.qml:160
 msgid "Airthings"
 msgstr "Airthings"
 
 #: ../package/contents/ui/FullRepresentation.qml:111
+#: ../package/contents/ui/SensorLevelEditor.qml:99
 msgid "Good"
 msgstr "Bon"
 
 #: ../package/contents/ui/FullRepresentation.qml:112
+#: ../package/contents/ui/SensorLevelEditor.qml:113
 msgid "Fair"
 msgstr "Moyen"
 
@@ -416,33 +443,61 @@ msgstr "Saisissez vos identifiants client Airthings et choisissez un appareil."
 msgid "Configure…"
 msgstr "Configurer…"
 
-#: ../package/contents/ui/main.qml:76
+#: ../package/contents/ui/main.qml:82
 msgid "Cannot reach the Airthings API. Check your network connection."
 msgstr ""
 "Impossible de joindre l'API Airthings. Vérifiez votre connexion réseau."
 
-#: ../package/contents/ui/main.qml:79
+#: ../package/contents/ui/main.qml:85
 msgid ""
 "Rate limit reached (120 requests per hour). Increase the refresh interval."
 msgstr ""
 "Limite de requêtes atteinte (120 par heure). Augmentez l'intervalle "
 "d'actualisation."
 
-#: ../package/contents/ui/main.qml:81
+#: ../package/contents/ui/main.qml:87
 msgid "Airthings API error %1: %2"
 msgstr "Erreur de l'API Airthings %1 : %2"
 
-#: ../package/contents/ui/main.qml:94
+#: ../package/contents/ui/main.qml:100
 msgid "No readings available for this device yet"
 msgstr "Aucune mesure disponible pour cet appareil pour le moment"
 
-#: ../package/contents/ui/main.qml:147
+#: ../package/contents/ui/main.qml:153
 msgid "Refresh now"
 msgstr "Actualiser maintenant"
 
-#: ../package/contents/ui/main.qml:157
+#: ../package/contents/ui/main.qml:163
 msgid "Fetched %1 · sample recorded %2"
 msgstr "Récupéré à %1 · mesure enregistrée à %2"
+
+#: ../package/contents/ui/SensorLevelEditor.qml:69
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: ../package/contents/ui/SensorLevelEditor.qml:74
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: ../package/contents/ui/SensorLevelEditor.qml:86
+msgid "Level"
+msgstr "Niveau"
+
+#: ../package/contents/ui/SensorLevelEditor.qml:90
+msgid "Minimum"
+msgstr "Minimum"
+
+#: ../package/contents/ui/SensorLevelEditor.qml:94
+msgid "Maximum"
+msgstr "Maximum"
+
+#: ../package/contents/ui/SensorLevelEditor.qml:131
+msgid ""
+"Enter valid numbers ordered as: fair minimum ≤ good minimum ≤ good maximum ≤ "
+"fair maximum."
+msgstr ""
+"Saisissez des nombres valides ordonnés ainsi : minimum moyen ≤ minimum bon ≤ "
+"maximum bon ≤ maximum moyen."
 
 #~ msgid "Min %1 · Average %2 · Max %3"
 #~ msgstr "Min. %1 · Moyenne %2 · Max. %3"

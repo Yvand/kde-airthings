@@ -6,6 +6,7 @@ import org.kde.kirigami as Kirigami
 
 import "code/api.mjs" as Api
 import "code/history.mjs" as History
+import "code/sensors.mjs" as Sensors
 
 PlasmoidItem {
     id: root
@@ -29,6 +30,7 @@ PlasmoidItem {
         return wanted.length === 0 ? readings : readings.filter(r => wanted.indexOf(r.sensorType) !== -1);
     }
     readonly property int sparklineHours: Math.min(cfg.sparklineHours, cfg.historyDays * 24)
+    readonly property var sensorLevels: Sensors.configuredLevels(cfg)
 
     // ---- Theme: follow Plasma, or force light/dark in the full view ----
     readonly property bool forcedTheme: cfg.themeMode === "light" || cfg.themeMode === "dark"
@@ -45,6 +47,10 @@ PlasmoidItem {
         case "poor": return "#da4453";
         default: return accentColor;
         }
+    }
+
+    function sensorQuality(sensorType, value, unit) {
+        return Sensors.quality(sensorType, value, unit, sensorLevels);
     }
 
     // ---- API and history storage ----

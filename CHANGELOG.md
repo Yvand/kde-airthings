@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Configurable good and fair value ranges for each classified sensor, with
+  metric and imperial levels, validation, and reset controls in the widget
+  settings.
 - Repository instructions for AI coding agents
   (`.github/copilot-instructions.md`), covering build/lint/run/release
   commands, high-level architecture, and key conventions.

@@ -13,6 +13,11 @@ ConfigModel {
         source: "ConfigDisplay.qml"
     }
     ConfigCategory {
+        name: i18n("Sensor Levels")
+        icon: "speedometer"
+        source: "ConfigSensorLevels.qml"
+    }
+    ConfigCategory {
         name: i18n("History")
         icon: "view-history"
         source: "ConfigHistory.qml"

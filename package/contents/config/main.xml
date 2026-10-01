@@ -59,4 +59,49 @@
       <max>90</max>
     </entry>
   </group>
+
+  <group name="SensorLevels">
+    <entry name="radonBqGoodMin" type="Double"><default>0</default></entry>
+    <entry name="radonBqGoodMax" type="Double"><default>100</default></entry>
+    <entry name="radonBqFairMin" type="Double"><default>0</default></entry>
+    <entry name="radonBqFairMax" type="Double"><default>150</default></entry>
+    <entry name="radonPciGoodMin" type="Double"><default>0</default></entry>
+    <entry name="radonPciGoodMax" type="Double"><default>2.7</default></entry>
+    <entry name="radonPciFairMin" type="Double"><default>0</default></entry>
+    <entry name="radonPciFairMax" type="Double"><default>4</default></entry>
+
+    <entry name="co2PpmGoodMin" type="Double"><default>0</default></entry>
+    <entry name="co2PpmGoodMax" type="Double"><default>800</default></entry>
+    <entry name="co2PpmFairMin" type="Double"><default>0</default></entry>
+    <entry name="co2PpmFairMax" type="Double"><default>1000</default></entry>
+
+    <entry name="vocPpbGoodMin" type="Double"><default>0</default></entry>
+    <entry name="vocPpbGoodMax" type="Double"><default>250</default></entry>
+    <entry name="vocPpbFairMin" type="Double"><default>0</default></entry>
+    <entry name="vocPpbFairMax" type="Double"><default>2000</default></entry>
+
+    <entry name="pm1MgpcGoodMin" type="Double"><default>0</default></entry>
+    <entry name="pm1MgpcGoodMax" type="Double"><default>10</default></entry>
+    <entry name="pm1MgpcFairMin" type="Double"><default>0</default></entry>
+    <entry name="pm1MgpcFairMax" type="Double"><default>25</default></entry>
+
+    <entry name="pm25MgpcGoodMin" type="Double"><default>0</default></entry>
+    <entry name="pm25MgpcGoodMax" type="Double"><default>10</default></entry>
+    <entry name="pm25MgpcFairMin" type="Double"><default>0</default></entry>
+    <entry name="pm25MgpcFairMax" type="Double"><default>25</default></entry>
+
+    <entry name="humidityPctGoodMin" type="Double"><default>30</default></entry>
+    <entry name="humidityPctGoodMax" type="Double"><default>60</default></entry>
+    <entry name="humidityPctFairMin" type="Double"><default>25</default></entry>
+    <entry name="humidityPctFairMax" type="Double"><default>70</default></entry>
+
+    <entry name="tempCGoodMin" type="Double"><default>18</default></entry>
+    <entry name="tempCGoodMax" type="Double"><default>25</default></entry>
+    <entry name="tempCFairMin" type="Double"><default>16</default></entry>
+    <entry name="tempCFairMax" type="Double"><default>27</default></entry>
+    <entry name="tempFGoodMin" type="Double"><default>64</default></entry>
+    <entry name="tempFGoodMax" type="Double"><default>77</default></entry>
+    <entry name="tempFFairMin" type="Double"><default>61</default></entry>
+    <entry name="tempFFairMax" type="Double"><default>81</default></entry>
+  </group>
 </kcfg>

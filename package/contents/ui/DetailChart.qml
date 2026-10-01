@@ -63,7 +63,7 @@ ColumnLayout {
             text: detail.reading ? detail.format(detail.reading.value) : ""
             font.bold: true
             color: detail.reading
-                   ? detail.widget.qualityColor(Sensors.quality(detail.sensorType, detail.reading.value, detail.reading.unit))
+                   ? detail.widget.qualityColor(detail.widget.sensorQuality(detail.sensorType, detail.reading.value, detail.reading.unit))
                    : Kirigami.Theme.textColor
         }
     }
