@@ -1,6 +1,6 @@
 <img src="assets/logo.png" alt="kde-airthings logo" width="100" height="100" align="right">
 
-# Airthings device data visualizer
+# KDE widget for Airthings devices
 
 A KDE Plasma 6 widget (plasmoid) that displays live air quality readings and
 history from your [Airthings](https://www.airthings.com/) device directly on
@@ -29,11 +29,9 @@ your desktop panel or desktop.
 
 ## Screenshots
 
-![Full expanded view](assets/dashboard.png)
-
-![Display settings](assets/settings-display.png)
-
-![General settings](assets/settings-general.png)
+| Full expanded view | Display settings | General settings |
+| --- | --- | --- |
+| <img src="assets/dashboard.png" alt="Full expanded view" width="250"> | <img src="assets/settings-display.png" alt="Display settings" width="250"> | <img src="assets/settings-general.png" alt="General settings" width="250"> |
 
 ## Requirements
 
