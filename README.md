@@ -44,7 +44,7 @@ your desktop panel or desktop.
 ### From the KDE Store (recommended)
 
 Search for "Airthings" in Plasma's **Add Widgets** dialog (or browse
-[store.kde.org](https://store.kde.org/)) and install it directly from there.
+[store.kde.org](https://store.kde.org/p/2375813/)) and install it directly from there.
 
 ### Manual installation
 
